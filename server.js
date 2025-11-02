@@ -5,6 +5,8 @@ require('dotenv').config();
 
 const authRoutes = require('./routes/auth');
 const rightsRoutes = require('./routes/rights');
+const contactRoutes = require('./routes/contactRoutes');
+
 
 const app = express();
 
@@ -15,7 +17,7 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/rights', rightsRoutes);
-
+app.use("/api/contact", contactRoutes);
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("MongoDB connected"))
